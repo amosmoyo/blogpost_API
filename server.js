@@ -1,6 +1,8 @@
 const express = require('express');
 const colors = require('colors');
 
+const userRouter = require('./routes/user')
+
 const dotenv = require('dotenv')
 
 const databaseConn = require('./config/db');
@@ -12,6 +14,9 @@ const app = express();
 
 // database connections
 databaseConn();
+
+
+app.use('/api/v1/users', userRouter);
 
 const  port = process.env.PORT || 5000;
 
