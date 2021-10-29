@@ -23,7 +23,6 @@ const server = app.listen(port, () => {
 //  unhandled promise rejection
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`.bold.red);
-
   // close server and exit and is 1 for default error
   server.close(() => process.exit(1));
 
