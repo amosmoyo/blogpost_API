@@ -1,0 +1,28 @@
+{
+  "name": "project4",
+  "version": "1.0.0",
+  "description": "simple nodejs api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node server",
+    "dev":"nodemon server"
+  },
+  "keywords": [
+    "nodejs",
+    "and",
+    "express"
+  ],
+  "author": "amosmoyo",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
