@@ -2,6 +2,9 @@
 Design and Build an API in nodejs  for a blogpost application
 Implement the api in express or nest js framework
 
+**APIDOC** [(https://documenter.getpostman.com/view/9884450/UVByH9ZN)]
+**HOST_URL** [(https://floating-river-27415.herokuapp.com/)]
+
 
 **Database**
 - Use MongoDB atlas for your database
