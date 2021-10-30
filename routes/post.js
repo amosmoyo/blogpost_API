@@ -1,11 +1,22 @@
 const express = require('express');
 
-const post = require('../controllers/post')
+const post = require('../controllers/post');
+
+const {protect } = require('../middlewares/auth');
+
+const commentsRouter = require('./comment')
 
 const router = express.Router();
 
-router.route('/').get(post.getPosts).post(post.createPost)
+// re-routing
+router.use('/:postId/comments', commentsRouter);
 
-router.route('/:id').get(post.getPost).put(post.updatePost).delete(post.deletePost);
+router.route('/').get(post.getPosts).post(protect, post.createPost);
+
+router.route('/:id').get(post.getPost).put(protect, post.updatePost).delete(protect, post.deletePost);
+
+router.put('/:id/like', protect, post.likePost);
+
+router.put('/:id/unlike', protect, post.unlikePost);
 
 module.exports = router;

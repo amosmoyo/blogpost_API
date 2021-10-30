@@ -7,6 +7,7 @@ const err = require('./middlewares/error');
 
 const userRouter = require('./routes/user')
 const postRouter = require('./routes/post')
+const commentRouter = require('./routes/comment')
 
 const dotenv = require('dotenv')
 
@@ -28,6 +29,7 @@ app.use(cookieParser())
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/posts', postRouter);
+app.use('/api/v1/comments', commentRouter);
 
 // error middleware
 app.use(err);
