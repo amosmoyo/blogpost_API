@@ -12,6 +12,8 @@ router.post('/login', userController.loginUser);
 
 router.get('/account', protect, userController.getMe)
 
+// router.get('/logout', userController.logout)
+
 router.get('/', userController.getAllUser)
 
 router.put('/:personId/follow', protect, userController.follow);
