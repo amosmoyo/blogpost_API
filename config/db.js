@@ -30,12 +30,12 @@ const dbConnect = async () => {
     // useCreateIndex: true,
     // useFindAndModify: false,
     useUnifiedTopology: true,
-    server: { 
-        socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } 
-    }, 
-    replset: {
-        socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } 
-   }
+  //   server: { 
+  //       socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } 
+  //   }
+  // //   replset: {
+  // //       socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } 
+  // //  }
   });
 
   console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold);
