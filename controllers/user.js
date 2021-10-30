@@ -7,7 +7,7 @@ const ErrorResponse = require('../utils/errResponce')
 // @route     POST /api/v1/users/register
 // @access    Public
 exports.registerUser = asyncHandler( async(req, res, next) =>{
-  console.log(req.body)
+  // console.log(req.body)
 
   const { name, email, password } = req.body;
 
@@ -45,7 +45,7 @@ exports.loginUser = asyncHandler( async(req, res, next) =>{
   // check for user
   const user = await User.findOne({email}).select('+password');
 
-  console.log(email, password, 2, user)
+  // console.log(email, password, 2, user)
 
   if(!user) {
     // return new ErrorResponse('Invalid cresidential', 401)

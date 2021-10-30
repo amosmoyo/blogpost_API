@@ -25,11 +25,17 @@ const colors = require('colors')
 //     });
 // };
 const dbConnect = async () => {
-  const conn = await mongoose.connect(process.env.LOCAL_DB, {
+  const conn = await mongoose.connect(process.env.MONGO_DB, {
     useNewUrlParser: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    server: { 
+        socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } 
+    }, 
+    replset: {
+        socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } 
+   }
   });
 
   console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold);
