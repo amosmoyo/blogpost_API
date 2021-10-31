@@ -148,15 +148,15 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 // @route     PUT /api/v1/users/:personId/follow
 // @access    Private
 exports.follow = asyncHandler(async (req, res, next) => {
-  if (req.user.id !== req.params.id) {
+  if (req.user.id !== req.params.personId) {
     try {
-      const user = await User.findById(req.params.id);
+      const user = await User.findById(req.params.personId);
 
       const currentUser = await User.findById(req.user.id);
 
       if (!user.followers.includes(req.user.id)) {
         await user.updateOne({ $push: { followers: req.user.id } });
-        await currentUser.updateOne({ $push: { followings: req.params.id } });
+        await currentUser.updateOne({ $push: { followings: req.params.personId } });
         res.status(200).json({
           success: true,
           message: "user successful followed"
@@ -182,17 +182,17 @@ exports.follow = asyncHandler(async (req, res, next) => {
 // @route     PUT /api/v1/users/:personId/unfollow
 // @access    Private
 exports.unfollow =  asyncHandler(async (req, res, next) => {
-  if (req.user.id !== req.params.id) {
+  if (req.user.id !== req.params.personId) {
     try {
       // the guy i am unfollowing 
-      const user = await User.findById(req.params.id);
+      const user = await User.findById(req.params.personId);
 
       // me 
       const currentUser = await User.findById(req.user.id);
 
       if (user.followers.includes(req.user.id)) {
         await user.updateOne({ $pull: { followers: req.user.id } });
-        await currentUser.updateOne({ $pull: { followings: req.params.id } });
+        await currentUser.updateOne({ $pull: { followings: req.params.personId } });
         res.status(200).json({
           success: true,
           message: "user has been unfollowed"

@@ -70,9 +70,10 @@ exports.addComment = asyncHandler(async (req, res, next) => {
       )
     );
   }
-
-  // Make sure user is bootcamp owner
-  if (post.user.toString() !== req.user.id) {
+  // console.log(post.user.toString())
+  // console.log(req.user.id)
+  // Make sure user is post owner
+  if (post.user.toString() === req.user.id) {
     return next(
       new ErrorResponse(
         `User ${req.user.id} is not authorized to add a comment to post ${post._id}`,
@@ -102,7 +103,7 @@ exports.updateComment = asyncHandler(async (req, res, next) => {
     );
   }
 
-  // Make sure user is course owner
+  // Make sure user is comment owner
   if (comment.user.toString() !== req.user.id && req.user.role !== 'admin') {
     return next(
       new ErrorResponse(
@@ -138,7 +139,7 @@ exports.deleteComment = asyncHandler(async (req, res, next) => {
     );
   }
 
-  // Make sure user is course owner
+  // Make sure user is comment owner
   if (commment.user.toString() !== req.user.id && req.user.role !== 'admin') {
     return next(
       new ErrorResponse(
